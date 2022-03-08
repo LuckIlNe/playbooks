@@ -1,0 +1,25 @@
+---
+# Ubuntu LAMP Stack
+#
+#
+
+- name: LAMP install
+  hosts: devServers 
+  remote_user: root
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Install prerequisites
+      apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
+      tags: [ system ]
+
+    - name: Install LAMP Packages
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'apache2', 'mysql-server', 'php', 'php-mysql', 'libapache2-mod-php' ]
+      tags: [ system ]
+        
+    - name: echo
+      debug:
+              msg: Ubuntu
+      when: ansible_distribution == 'Ubuntu'
