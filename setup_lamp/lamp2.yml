@@ -3,7 +3,7 @@
   hosts: devServers
   remote_user: root
   roles:
-    #- { role: "packages/php", tag: mysql } packages
+    #- { role: "packages/php", tag: mysql }
     - { role: "stores/mysql", tags: mysql }
     #- { role: "webServers/apache", tags: apache }
     #- { role: "webServers/wordpress", tags: wordpress }
