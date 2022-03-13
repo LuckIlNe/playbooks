@@ -1,10 +1,14 @@
 ---
-- name: check Password
-  debug:
-    msg: 
-    - "Password: {{ mysql_root_password }}"
-
+- name: set mysql config .my.cnf
+  template:
+    src: my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+    mode: 0600
+    
 - name: Set the root password
+  no_log: true
   mysql_user:
     name: root
     password: "{{ mysql_root_password }}"
