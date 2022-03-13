@@ -9,10 +9,21 @@
     name: root
     password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    host: 'localhost'
-    priv: "*.*:ALL,GRANT"
-    check_implicit_admin: true 
-  tags: [ mysql, mysql-root ]
+
+- name: Removes all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Removes the MySQL test database
+  mysql_db:
+    name: test
+    state: absent
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
 
 - name: Creates database for WordPress
   mysql_db:
@@ -20,4 +31,3 @@
     state: present
     login_user: root
     login_password: "{{ mysql_root_password }}"
-  tags: [ mysql ]
