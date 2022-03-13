@@ -1,6 +1,6 @@
 ---
 
-- name: Install MySQL Server
+- name: Install Pakcges
   import_tasks: ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
   #- import_tasks: centos.yml
