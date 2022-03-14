@@ -1,0 +1,16 @@
+---
+- name: Download wordpress
+  get_url: 
+    url: https://wordpress.org/latest.tar.gz
+    dest: /tmp/wordpress_latest.tar.gz
+
+- name: Extract wordpress to /var/www/wordpress
+    src: /tmp/wordpress_latest.tar.gz
+    dest: /var/www/wordpress
+    owner: www-data
+    group: www-data
+
+- name: Creates database for WordPress
+  mysql_db:
+    name: wordpress
+    state: present
