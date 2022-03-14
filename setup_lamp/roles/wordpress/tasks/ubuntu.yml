@@ -1,15 +1,19 @@
 ---
-- name: Download wordpress
-  get_url: 
-    url: https://wordpress.org/latest.tar.gz
-    dest: /tmp/wordpress_latest.tar.gz
-
-- name: Extract wordpress to /var/www/wordpress
-    src: /tmp/wordpress_latest.tar.gz
-    dest: /var/www/wordpress
+- name: Download and Extract wordpress to /var/www/wordpress
+  unarchive:
+    src: https://wordpress.org/latest.tar.gz
+    dest: /var/www
+    remote_src: yes
     owner: www-data
     group: www-data
 
+- name: Set wp-config.php file
+  template:
+    src: wp-config.php.j2 
+    dest: /var/www/wordpress/wp-config.php
+    owner: www-data
+    group: www-data
+    
 - name: Creates database for WordPress
   mysql_db:
     name: wordpress
