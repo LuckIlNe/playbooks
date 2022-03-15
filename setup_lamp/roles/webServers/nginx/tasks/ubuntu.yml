@@ -8,8 +8,9 @@
 
 - name: Create a symbolic link to wordpress.conf
   file:
+    src_remote: yes 
     src: /etc/nginx/sites-available/wordpress.conf
-    dest: /etc/nginx/sites--enabled/wordpress.conf
+    dest: /etc/nginx/sites-enabled/wordpress.conf
     state: link
 
 - name: Remove file default nginx file 
