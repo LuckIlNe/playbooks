@@ -17,4 +17,4 @@
   shell: a2dissite 000-default
 
 - name: Add wordpress Apache configuration
-  shell: a2dissite wordpress.conf
+  shell: a2ensite wordpress.conf
