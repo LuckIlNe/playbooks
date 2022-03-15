@@ -12,3 +12,9 @@
     dest: /etc/apache2/sites-available/wordpress.conf
     owner: www-data
     group: www-data
+
+- name: Disable default Apache configuration
+  shell: a2dissite 000-default
+
+- name: Add wordpress Apache configuration
+  shell: a2dissite wordpress.conf

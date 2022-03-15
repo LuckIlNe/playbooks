@@ -5,10 +5,19 @@
   template:
     src: wordpress.conf.j2
     dest: /etc/nginx/sites-available/wordpress.conf
-    #owner: nginx
-    #group: nginx
+
+- name: Create a symbolic link to wordpress.conf
+  file:
+    src: /etc/nginx/sites-available/wordpress.conf
+    dest: /etc/nginx/sites--enabled/wordpress.conf
+    state: link
 
 - name: Remove file default nginx file 
   file:
     path: /etc/nginx/sites-available/default
+    state: absent
+
+- name: Remove file default nginx file 
+  file:
+    path: /etc/nginx/sites-enabled/default
     state: absent
