@@ -1,9 +1,9 @@
 - name: restart Apache2
-    service:
-      name: apache2
-      state: restarted
+  service:
+    name: apache2
+    state: restarted
 
 - name: enabled Apache2
-    service:
-      name: apache2
-      state: enabled
+  service:
+    name: apache2
+    state: enabled

@@ -1,9 +1,9 @@
 - name: restart Nginx
-    service:
-      name: Nginx
-      state: restarted
+  service:
+    name: Nginx
+    state: restarted
 
 - name: enabled Nginx
-    service:
-      name: Nginx
-      state: enabled
+  service:
+    name: Nginx
+    state: enabled
