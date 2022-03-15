@@ -5,3 +5,10 @@
   apache2_module: name=rewrite state=present
   #notify:
   #  - restart apache2
+
+- name: Set wordpress.conf file for Apache
+  template:
+    src: wordpress.conf.j2
+    dest: /etc/apache2/sites-available/wordpress.conf
+    owner: www-data
+    group: www-data
