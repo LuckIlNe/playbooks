@@ -5,5 +5,8 @@
   template:
     src: wordpress.conf.j2
     dest: /etc/nginx/sites-available/wordpress.conf
-    owner: nginx
-    group: nginx
+    #owner: nginx
+    #group: nginx
+
+- name: Move default nginx file to back
+  command: mv /etc/nginx/sites-available/default{,back}
