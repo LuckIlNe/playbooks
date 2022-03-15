@@ -8,5 +8,7 @@
     #owner: nginx
     #group: nginx
 
-- name: Move default nginx file to back
-  command: mv /etc/nginx/sites-available/default{,back}
+- name: Remove file default nginx file 
+  file:
+    path: /etc/nginx/sites-available/default
+    state: absent
