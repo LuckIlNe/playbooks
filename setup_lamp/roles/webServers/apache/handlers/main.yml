@@ -3,7 +3,7 @@
     name: apache2
     state: restarted
 
-- name: enabled Apache2
+- name: reloaded Apache2
   service:
     name: apache2
-    state: enabled
+    state: reloaded

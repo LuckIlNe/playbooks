@@ -18,3 +18,5 @@
 
 - name: Add wordpress Apache configuration
   shell: a2ensite wordpress.conf
+  notify:
+    - reloaded Apache2
