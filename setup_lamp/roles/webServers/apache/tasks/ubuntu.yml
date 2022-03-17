@@ -20,3 +20,9 @@
   shell: a2ensite wordpress.conf
   notify:
     - reloaded Apache2
+
+- name: be sure Apache is running and enabled
+  service:
+    name: apache2
+    state: started
+    enabled: yes
