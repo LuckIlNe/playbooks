@@ -9,6 +9,8 @@
     path: /etc/apache2/ports.conf
     regexp: '^Listen 80'
     line: Listen 8080
+  notify:
+    - restart apache2
 
 - name: Set wordpress.conf file for Apache
   template:
@@ -23,7 +25,7 @@
 - name: Add wordpress Apache configuration
   shell: a2ensite wordpress.conf
   notify:
-    - restart apache2
+    - reloaded apache2
 
 - name: be sure Apache is running and enabled
   service:
