@@ -1,10 +1,14 @@
-- name: install apache2
+- name: Install apache2
   apt: name=apache2 update_cache=yes state=present
 
-- name: enabled mod_rewrite
+- name: Enabled mod_rewrite
   apache2_module: name=rewrite state=present
-  #notify:
-  #  - restart apache2
+
+- name: Change listen port
+  lineinfile:
+    path: /etc/apache2/port.conf
+    regexp: '^Listen 80'
+    line: Listen 8080
 
 - name: Set wordpress.conf file for Apache
   template:
@@ -19,7 +23,7 @@
 - name: Add wordpress Apache configuration
   shell: a2ensite wordpress.conf
   notify:
-    - reloaded Apache2
+    - restart apache2
 
 - name: be sure Apache is running and enabled
   service:

@@ -25,4 +25,9 @@
     name: test
     state: absent
 
+- name: be sure MySQL is running and enabled
+  service:
+    name: mysql
+    state: started
+    enabled: yes
 

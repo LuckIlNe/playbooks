@@ -48,14 +48,18 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'put your unique phrase here' );
-define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
-define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
-define( 'NONCE_KEY',        'put your unique phrase here' );
-define( 'AUTH_SALT',        'put your unique phrase here' );
-define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
-define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
-define( 'NONCE_SALT',       'put your unique phrase here' );
+define('AUTH_KEY',         '3+m$z00|W(-|.t2:!45>~EC%Wj`APv)7~_&%kn]c@]zD5la<L9$Qj;#;sF~OZLVw');
+define('SECURE_AUTH_KEY',  '#-[r1%t>jg~j9fo/kk[onf&MLn x!qa7h2S_pI^~@uC*`I4-1{{?P6r8ve^x?b.;');
+define('LOGGED_IN_KEY',    '0#+|* -!3W).ppkvx]}7gCRKUiOZB6j3.M#AL|iQ>GdlD1oN{N,BE6w=alQO7_]n');
+define('NONCE_KEY',        '<WtX+Mjk&:v:/t>8co H=fm)Z g82r7SxH*1qv/_b15XT0K1pf:5CL,#F^rk8ghY');
+define('AUTH_SALT',        'YXC+7lX/xZqW2Iam((u,H^?x@+P8yVRcA7fUsML.flQ4X$s@Qn12V|@g4 zane2A');
+define('SECURE_AUTH_SALT', '+7R2!2O8`X%/hs*P5lthS5t||.TG$p)*>I1|oQA8:^6$i`Li.O}a8OR)s6)?-9Gg');
+define('LOGGED_IN_SALT',   '-iAX,;|2>.l-~[7>ou//qiR`89CG`@j(E[bA)|7^/fRZ|&g2FV^ZYSzu(`4)#gqC');
+define('NONCE_SALT',       'p_-<13OGj/{&knRP9}V4% 2@]}L%2Iji+?Pn~6QU8ydcwC%?n|+FAXUlBVjHi|oQ');
+
+
+define( 'WP_HOME', 'http://{{ ansible_ssh_host }}' );
+define( 'WP_SITEURL', 'http://{{ ansible_ssh_host }}' );
 
 /**#@-*/
 

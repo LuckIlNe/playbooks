@@ -12,12 +12,20 @@
     dest: /etc/nginx/sites-enabled/wordpress.conf
     state: link
 
-- name: Remove file default nginx file 
+- name: Remove file default nginx file from sites-available
   file:
     path: /etc/nginx/sites-available/default
     state: absent
 
-- name: Remove file default nginx file 
+- name: Remove file default nginx file from sites-enabled
   file:
     path: /etc/nginx/sites-enabled/default
     state: absent
+  notify:
+    - restart nginx
+
+- name: be sure Nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: yes
