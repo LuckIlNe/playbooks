@@ -5,12 +5,12 @@
   apache2_module: name=rewrite state=present
 
 - name: Change listen port
-  notify:
-    - restart apache2
   lineinfile:
     path: /etc/apache2/ports.conf
     regexp: '^Listen 80'
     line: Listen 8080
+  notify:
+    - restart apache2
 
 - name: Set wordpress.conf file for Apache
   template:
@@ -30,5 +30,5 @@
 - name: be sure Apache is running and enabled
   service:
     name: apache2
-    state: started
+    state: restarted
     enabled: yes
