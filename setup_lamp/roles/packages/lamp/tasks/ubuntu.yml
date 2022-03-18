@@ -1,9 +1,11 @@
 ---
-- name: Install prerequisites 
-  apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
-  tags: [ system ]
+- name: packages | ensure apt list dir exists
+  file:
+    path: /var/lib/apt/lists/
+    state: directory
+    mode: 0755
 
 - name: Install LAMP Packages
   apt: name={{ item }} update_cache=yes state=latest
-  loop: [ 'apache2', 'mysql-server', 'php', 'php-mysql', 'python3-pymysql','libapache2-mod-php' ]
+  loop: [ 'aptitude', 'apache2', 'mysql-server', 'php', 'php-mysql', 'python3-pymysql','libapache2-mod-php' ]
   tags: [ system ]
