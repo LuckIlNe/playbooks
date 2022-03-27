@@ -31,10 +31,9 @@
 - name: Copy files to prometheus directory \#1
   copy:
     src: /tmp/prometheus-prometheus-2.34.0.linux-amd64/\"{{ item }}\"
-    dest: /etc/prometheus/'{{ item }}'
+    dest: /etc/prometheus/\"{{ item }}\"
     owner: prometheus
     group: prometheus
-    mod: 775
     remote_src: yes
   loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
 
