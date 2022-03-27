@@ -3,12 +3,14 @@
 192.168.11.102
 
 
-[prod]
+[prod:children]
+prod_infra
+prod_services
 
-[prod.infra]
+[prod_infra]
 10.115.49.101
 
-[prod.services]
+[prod_services]
 10.115.49.102
 10.115.49.103
 
