@@ -8,4 +8,3 @@
 - name: Install LAMP Packages
   apt: name={{ item }} update_cache=yes state=latest
   loop: [ 'aptitude', 'apache2', 'mysql-server', 'php', 'php-mysql', 'python3-pymysql','libapache2-mod-php' ]
-  tags: [ system ]

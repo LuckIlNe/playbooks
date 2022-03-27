@@ -1,0 +1,22 @@
+---
+- name: Install all required packages for prometheus
+  dnf: name={{ item }} update_cache=yes state=latest
+  loop: [ 'wget' ]
+
+- name: Download and Extract prometheus files to /tmp/prometheus
+  unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
+    dest: /tmp/prometheus
+    remote_src: yes
+
+- name: Create 'prometheus' group
+  group:
+    name: prometheus
+    state: present
+
+  - name: Create 'prometheus' user
+    user:
+      name: prometheus
+      groups: prometheus
+      state: present
+      append: yes
