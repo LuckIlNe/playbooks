@@ -6,5 +6,5 @@
   when: ansible_distribution == 'Ubuntu'
   #- import_tasks: centos.yml
   #when: ansible_distribution == 'CentOS'
-  #- import_tasks: alma.yml
-  #when: ansible_distribution == '1'
+  - import_tasks: alma.yml
+  when: ansible_distribution == 'AlmaLinux'
