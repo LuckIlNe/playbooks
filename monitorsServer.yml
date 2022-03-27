@@ -4,4 +4,4 @@
   hosts: '{{ host }}'
   roles:
     # - { role: "monitores/zabbix", tags: zabbix }
-    - { role: monitores/prometheus, tags: prometheus }
+    - { role: "monitores/prometheus", tags: prometheus }
