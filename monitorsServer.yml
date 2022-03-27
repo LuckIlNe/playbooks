@@ -1,8 +1,5 @@
 ---
 - name: Install Server Monitor
-  become: true
-  hosts: 
-    - dev_infra
+  hosts: dev_infra
   roles:
-    # - { role: "monitores/zabbix", tags: zabbix }
-    - { role: "monitores/prometheus", tags: prometheus }
+    - { role: "monitorings/prometheus", tags: prometheus }
