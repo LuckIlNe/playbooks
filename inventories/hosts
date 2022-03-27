@@ -1,5 +1,12 @@
-[dev]
+[dev:children]
+dev_infra
+dev_services
+
+
+[dev_infra]
 192.168.11.101
+
+[dev_service]
 192.168.11.102
 
 
@@ -10,7 +17,7 @@ prod_services
 [prod_infra]
 10.115.49.101
 
-[prod_services]
+[prod_service]
 10.115.49.102
 10.115.49.103
 
