@@ -15,8 +15,8 @@
     state: present
 
   - name: Create 'prometheus' user
-    user:
-      name: prometheus
-      groups: prometheus
-      state: present
-      append: yes
+  user:
+    name: prometheus
+    groups: prometheus
+    state: present
+    append: yes

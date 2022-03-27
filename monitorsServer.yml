@@ -2,6 +2,7 @@
 - name: Install Server Monitor
   hosts: dev_infra
   remote_user: "{{ remote_user }}"
+  become: true
   roles:
     - { role: "monitorings/prometheus/server", tags: prometheus }
     # - { role: "monitorings/zabbix/server", tags: prometheus }
