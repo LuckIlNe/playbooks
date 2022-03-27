@@ -30,8 +30,8 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-*/"{{ item }}"
-    dest: /etc/prometheus/"{{ item }}"
+    src: /tmp/prometheus-*/'{{ item }}'
+    dest: /etc/prometheus/'{{ item }}'
     #src: "{{ item.src }}"
     #dest: "{{ item.dest }}"
     owner: prometheus
