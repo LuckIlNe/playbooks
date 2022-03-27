@@ -21,10 +21,3 @@
     groups: prometheus
     state: present
     append: yes
-
-
-- name: Move files to prometheus directories
-
-
-
-- name: 
