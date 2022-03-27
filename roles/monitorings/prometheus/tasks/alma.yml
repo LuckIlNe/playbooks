@@ -1,0 +1,4 @@
+---
+- name: test
+  debug:
+    msg: Operation system {{ ansible_distribution }}

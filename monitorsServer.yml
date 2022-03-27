@@ -1,6 +1,6 @@
 ---
 - name: Install Server Monitor
   hosts: dev_infra
-  remote_user: app
+  remote_user: "{{ remote_user }}"
   roles:
     - { role: "monitorings/prometheus", tags: prometheus }
