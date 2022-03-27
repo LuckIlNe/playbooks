@@ -14,7 +14,7 @@
     name: prometheus
     state: present
 
-  - name: Create 'prometheus' user
+- name: Create 'prometheus' user
   user:
     name: prometheus
     groups: prometheus
