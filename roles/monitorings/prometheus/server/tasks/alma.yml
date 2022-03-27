@@ -34,13 +34,14 @@
     dest: /etc/prometheus/\"{{ item }}\"
     owner: prometheus
     group: prometheus
+    mode: 775
     remote_src: yes
   loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
 
 - name: Copy files to prometheus directory \#2
   copy:
-    src: /tmp/prometheus-*/\"{{ item }}\"
-    dest: /usr/local/bin/\"{{ item }}\"
+    src: /tmp/prometheus-*/"{{ item }}"
+    dest: /usr/local/bin/"{{ item }}"
     owner: prometheus
     group: prometheus
     remote_src: yes
