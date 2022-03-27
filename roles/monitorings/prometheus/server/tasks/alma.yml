@@ -17,7 +17,7 @@
 
 - name: Creates prometheus directories
   file:
-    path: "{{ item }}"/prometheus
+    path: \"{{ item }}\:"/prometheus
     state: directory
   loop: ['/etc', '/var/lib']
 
@@ -30,8 +30,8 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-*/"{{ item }}"
-    dest: /etc/prometheus/"{{ item }}"
+    src: /tmp/prometheus-*/\"{{ item }}\:"
+    dest: /etc/prometheus/\"{{ item }}\:"
     owner: prometheus
     group: prometheus
     mod: 775
@@ -40,8 +40,8 @@
 
 - name: Copy files to prometheus directory \#2
   copy:
-    src: /tmp/prometheus-*/"{{ item }}"
-    dest: /usr/local/bin/"{{ item }}"
+    src: /tmp/prometheus-*/\"{{ item }}\:"
+    dest: /usr/local/bin/\"{{ item }}\:"
     owner: prometheus
     group: prometheus
     remote_src: yes
