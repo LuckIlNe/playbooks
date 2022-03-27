@@ -30,8 +30,8 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-prometheus-2.34.0.linux-amd64/\"{{ item }}\"
-    dest: /etc/prometheus/\"{{ item }}\"
+    src: /tmp/prometheus-prometheus-2.34.0.linux-amd64/"{{ item }}"
+    dest: /etc/prometheus/"{{ item }}"
     owner: prometheus
     group: prometheus
     mode: 775
