@@ -12,7 +12,7 @@ dev_service
 
 [prod:children]
 prod_infra
-prod_services
+prod_service
 
 [prod_infra]
 10.115.49.101
