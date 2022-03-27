@@ -1,14 +1,7 @@
 ---
 - name: Install all required packages for prometheus
   dnf: name={{ item }} update_cache=yes state=latest
-  loop: [ 'wget', 'tar' ]
-
-- name: Download and Extract prometheus files to /tmp
-  unarchive:
-    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
-    dest: /tmp
-    validate_certs: no
-    remote_src: yes
+  loop: ['wget', 'tar']
 
 - name: Create 'prometheus' group
   group:
@@ -21,3 +14,41 @@
     groups: prometheus
     state: present
     append: yes
+
+- name: Creates prometheus directories
+  file:
+    path: {{ item }}/prometheus
+    state: directory
+  loop: ['/etc', '/var/lib']
+
+- name: Download and Extract prometheus files to /tmp
+  unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
+    dest: /tmp
+    validate_certs: no
+    remote_src: yes
+
+- name: Copy files to prometheus directory \#1
+  copy:
+    src: /tmp/prometheus-*/{{ item }}
+    dest: /etc/prometheus/{{ item }}
+    owner: prometheus
+    group: prometheus
+    mod: 775
+    remote_src: yes
+  loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
+
+- name: Copy files to prometheus directory \#2
+  copy:
+    src: /tmp/prometheus-*/{{ item }}
+    dest: /usr/local/bin/{{ item }}
+    owner: prometheus
+    group: prometheus
+    remote_src: yes
+  loop: ['prometheus', 'promtool']
+
+- name: Create systemd prometheus.service
+  template:
+    src: prometheus.service.j2
+    dest: /etc/systemd/system/prometheus.service
+  # notify:
