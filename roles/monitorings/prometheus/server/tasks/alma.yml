@@ -1,7 +1,7 @@
 ---
 - name: Install all required packages for prometheus
   dnf: name={{ item }} update_cache=yes state=latest
-  loop: [ 'wget' ]
+  loop: [ 'wget', 'tar' ]
 
 - name: Download and Extract prometheus files to /tmp
   unarchive:
