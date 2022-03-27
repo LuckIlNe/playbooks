@@ -1,6 +1,6 @@
 [dev:children]
 dev_infra
-dev_services
+dev_service
 
 
 [dev_infra]
