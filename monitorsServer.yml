@@ -1,6 +1,6 @@
 ---
 - name: Install Server Monitor
   hosts: dev_infra
-  remote_user: {{ hostvars[ansible_ssh_host].remote_user }}
+  remote_user: "{{ hostvars[ansible_ssh_host].remote_user }}"
   roles:
     - { role: "monitorings/prometheus", tags: prometheus }
