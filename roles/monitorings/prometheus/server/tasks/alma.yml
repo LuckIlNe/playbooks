@@ -21,6 +21,8 @@
     state: directory
   loop: ['/etc', '/var/lib']
 
+
+
 - name: Download and Extract prometheus files to /tmp
   unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
@@ -30,7 +32,7 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-*/\"{{ item }}\:"
+    src: /tmp/prometheus-prometheus-2.34.0.linux-amd64/\"{{ item }}\:"
     dest: /etc/prometheus/\"{{ item }}\:"
     owner: prometheus
     group: prometheus
