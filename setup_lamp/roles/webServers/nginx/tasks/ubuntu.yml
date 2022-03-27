@@ -1,0 +1,31 @@
+- name: install nginx
+  apt: name=nginx update_cache=yes state=present
+
+- name: Set wordpress.conf file for Nginx
+  template:
+    src: wordpress.conf.j2
+    dest: /etc/nginx/sites-available/wordpress.conf
+
+- name: Create a symbolic link to wordpress.conf
+  file:
+    src: /etc/nginx/sites-available/wordpress.conf
+    dest: /etc/nginx/sites-enabled/wordpress.conf
+    state: link
+
+- name: Remove file default nginx file from sites-available
+  file:
+    path: /etc/nginx/sites-available/default
+    state: absent
+
+- name: Remove file default nginx file from sites-enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify:
+    - restart nginx
+
+- name: be sure Nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: yes
