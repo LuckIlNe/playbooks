@@ -30,18 +30,24 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-prometheus-2.34.0.linux-amd64/"{{ item }}"
-    dest: /etc/prometheus/"{{ item }}"
+    #src: /tmp/prometheus-prometheus-*/"{{ item }}"
+    #dest: /etc/prometheus/"{{ item }}"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: prometheus
     group: prometheus
     mode: 775
     remote_src: yes
-  loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
+  loop:
+    - { src: '/tmp/prometheus-prometheus-*/prometheus.yml', dest: '/etc/prometheus/prometheus.yml' }
+    - { src: '/tmp/prometheus-prometheus-*/console_libraries/', dest: '/etc/prometheus/console_libraries/' }
+    - { src: '/tmp/prometheus-prometheus-*/consoles/', dest: '/etc/prometheus/consoles/' }
+  #loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
 
 - name: Copy files to prometheus directory \#2
   copy:
-    src: /tmp/prometheus-*/"{{ item }}"
-    dest: /usr/local/bin/"{{ item }}"
+    src: /tmp/prometheus-*/'{{ item }}'
+    dest: /usr/local/bin/'{{ item }}'
     owner: prometheus
     group: prometheus
     remote_src: yes
