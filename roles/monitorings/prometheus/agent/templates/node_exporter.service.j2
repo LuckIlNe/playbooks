@@ -1,0 +1,21 @@
+[Unit]
+Description=node-exporter Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=node-exporter
+Group=node-exporter
+ExecStart=/usr/local/bin/node_exporter \
+--web.listen-address="0.0.0.0:9100"
+--collectors.enabled meminfo,loadavg,filesystem
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+#запускаем
+systemctl enable --now node-exporter.service
