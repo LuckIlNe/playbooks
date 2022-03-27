@@ -17,13 +17,13 @@
 
 - name: Create prometheus directories
   file:
-    path: \"{{ item }}\"/prometheus
+    path: '{{ item }}'
     state: directory
-  loop: ['/etc', '/var/lib']
+  loop: ['/etc/prometheus', '/var/lib/prometheus']
 
 - debug:
-    msg: \"{{ item }}\"/prometheus
-  loop: ['/etc', '/var/lib']
+    msg: '{{ item }}'
+  loop: ['/etc/prometheus', '/var/lib/prometheus']
 
 - name: Download and Extract prometheus files to /tmp
   unarchive:
@@ -34,7 +34,7 @@
 
 - name: Copy files to prometheus directory \#1
   copy:
-    src: /tmp/prometheus-*/{{ item }}
+    src: /tmp/prometheus-2.34.0.linux-amd64/{{ item }}
     dest: /etc/prometheus/{{ item }}
     #src: "{{ item.src }}"
     #dest: "{{ item.dest }}"
@@ -50,7 +50,7 @@
 
 - name: Copy files to prometheus directory \#2
   copy:
-    src: /tmp/prometheus-*/{{ item }}
+    src: /tmp/prometheus-2.34.0.linux-amd64/{{ item }}
     dest: /usr/local/bin/{{ item }}
     owner: prometheus
     group: prometheus
