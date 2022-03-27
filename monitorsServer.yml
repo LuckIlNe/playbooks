@@ -1,0 +1,6 @@
+---
+- name: Install Server Monitor
+  become: true
+  roles:
+    # - { role: "monitores/zabbix", tags: zabbix }
+    - { role: monitores/prometheus, tags: prometheus }
