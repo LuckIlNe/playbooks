@@ -3,5 +3,5 @@
   hosts: dev_infra
   remote_user: "{{ remote_user }}"
   roles:
-    - { role: "monitorings/prometheus", tags: prometheus }
-    # - { role: "monitorings/zabbix", tags: prometheus }
+    - { role: "monitorings/prometheus/server", tags: prometheus }
+    # - { role: "monitorings/zabbix/server", tags: prometheus }
