@@ -7,6 +7,7 @@
   unarchive:
     src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
     dest: /tmp
+    validate_certs: no
     remote_src: yes
 
 - name: Create 'prometheus' group
@@ -20,3 +21,10 @@
     groups: prometheus
     state: present
     append: yes
+
+
+- name: Move files to prometheus directories
+
+
+
+- name: 
