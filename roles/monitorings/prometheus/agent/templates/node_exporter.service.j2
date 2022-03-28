@@ -8,7 +8,7 @@ Type=simple
 User=node-exporter
 Group=node-exporter
 ExecStart=/usr/local/bin/node_exporter \
---web.listen-address="0.0.0.0:9100"
+--web.listen-address="0.0.0.0:9100" \
 --collectors.enabled meminfo,loadavg,filesystem
 
 Restart=always

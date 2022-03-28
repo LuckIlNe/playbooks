@@ -5,4 +5,5 @@
   become: true
   roles:
     - { role: "monitorings/prometheus/server", tags: prometheus }
+    - { role: "monitorings/prometheus/agent", tags: node_exporter }
     # - { role: "monitorings/zabbix/server", tags: prometheus }
