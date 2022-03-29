@@ -6,7 +6,7 @@ global:
     static_configs:
       - targets: ['localhost:9100']
 
-{% for host in groups['dev_infra'] %}
+{% for host in groups[hosts.split('_')[0] + '_service'] %}
 
   - job_name: {{host}}
     scrape_interval: 5s
