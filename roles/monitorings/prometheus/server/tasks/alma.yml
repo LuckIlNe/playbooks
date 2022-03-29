@@ -22,11 +22,7 @@
     owner: prometheus
     group: prometheus
     recurse: yes
-  loop: ['/etc/prometheus', '/var/lib/prometheus']
-
-- debug:
-    msg: '{{ item }}'
-  loop: ['/etc/prometheus', '/var/lib/prometheus']
+  loop: [/etc/prometheus, /var/lib/prometheus, /etc/prometheus/consoles/, /etc/prometheus/console_libraries]
 
 - name: Download and Extract prometheus files to /tmp
   unarchive:
@@ -40,7 +36,7 @@
 - name: Copy files to prometheus directory \#1
   copy:
     src: /tmp/prometheus-2.34.0.linux-amd64/{{ item }}
-    dest: /etc/prometheus/
+    dest: /etc/prometheus/{{ item }}
     #src: "{{ item.src }}"
     #dest: "{{ item.dest }}"
     owner: prometheus
