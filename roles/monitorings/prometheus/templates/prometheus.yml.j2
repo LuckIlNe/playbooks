@@ -8,7 +8,7 @@ global:
 
 {% for host in groups['dev_infra'] %}
 
-  - job_name: host
+  - job_name: {{host}}
     scrape_interval: 5s
     static_configs:
       - targets: [ {{hostvars[host]['ansible_host']}}:9100 ]
