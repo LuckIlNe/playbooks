@@ -11,6 +11,6 @@ global:
   - job_name: host
     scrape_interval: 5s
     static_configs:
-      - targets: [ {{hostvars[host]['ansible_ssh_host']}}:9100 ]
+      - targets: [ {{hostvars[host]['ansible_host']}}:9100 ]
 
 {% endfor %}
