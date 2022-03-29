@@ -33,6 +33,13 @@
     validate_certs: no
     remote_src: yes
 
+- name: Add prometheues.yml config yaml
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+    owner: prometheus
+    group: prometheus
+    mode: 775
 
 ## check
 - name: Copy files to prometheus directory \#1
@@ -50,7 +57,7 @@
   #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/prometheus.yml', dest: '/etc/prometheus/prometheus.yml' }
   #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/console_libraries/', dest: '/etc/prometheus/console_libraries/' }
   #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/consoles/', dest: '/etc/prometheus/consoles/' }
-  loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
+  loop: [ 'consoles/', 'console_libraries/']
   tags: files
 
 - name: Copy files to prometheus directory \#2

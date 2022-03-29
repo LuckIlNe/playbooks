@@ -4,10 +4,10 @@ dev_service
 
 
 [dev_infra]
-192.168.11.101
+devInfra ansible_host=192.168.11.101
 
 [dev_service]
-192.168.11.102
+dev_ubuntu ansible_host=192.168.11.102
 
 
 [prod:children]
@@ -15,7 +15,7 @@ prod_infra
 prod_service
 
 [prod_infra]
-10.115.49.101
+infra ansible_host=10.115.49.101
 
 [prod_service]
 10.115.49.102
