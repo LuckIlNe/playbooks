@@ -30,9 +30,10 @@
     owner: node_exporter
     group: node_exporter
     remote_src: yes
+    mode: +x
 
 - name: Create systemd node_exporter.service
   template:
     src: node_exporter.service.j2
     dest: /etc/systemd/system/node_exporter.service
-  # notify:
+  notify: start node_exporter.service

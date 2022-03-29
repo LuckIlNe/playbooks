@@ -1,0 +1,9 @@
+---
+- name: Install Server Monitor
+  hosts: dev_infra
+  remote_user: "{{ remote_user }}"
+  become: true
+  strategy: free
+  roles:
+    - { role: "monitorings/node_exporter", tags: node_exporter }
+    - { role: "monitorings/zabbix_agent", tags: zabbix_agent }
