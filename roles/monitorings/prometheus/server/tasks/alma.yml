@@ -35,10 +35,12 @@
     validate_certs: no
     remote_src: yes
 
+
+## check
 - name: Copy files to prometheus directory \#1
   copy:
     src: /tmp/prometheus-2.34.0.linux-amd64/{{ item }}
-    dest: /etc/prometheus/
+    dest: /etc/prometheus/{{ item }}
     #src: "{{ item.src }}"
     #dest: "{{ item.dest }}"
     owner: prometheus
@@ -46,10 +48,11 @@
     mode: 775
     remote_src: yes
   #loop:
-  #  - { src: '/tmp/prometheus-/prometheus.yml', dest: '/etc/prometheus/prometheus.yml' }
-  #  - { src: '/tmp/prometheus-*/console_libraries/', dest: '/etc/prometheus/console_libraries/' }
-  #  - { src: '/tmp/prometheus-*/consoles/', dest: '/etc/prometheus/consoles/' }
+  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/prometheus.yml', dest: '/etc/prometheus/prometheus.yml' }
+  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/console_libraries/', dest: '/etc/prometheus/console_libraries/' }
+  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/consoles/', dest: '/etc/prometheus/consoles/' }
   loop: ['prometheus.yml', 'consoles/', 'console_libraries/']
+  tags: files
 
 - name: Copy files to prometheus directory \#2
   copy:
@@ -59,6 +62,7 @@
     group: prometheus
     remote_src: yes
   loop: ['prometheus', 'promtool']
+  tags: files
 
 - name: Create systemd prometheus.service
   template:
