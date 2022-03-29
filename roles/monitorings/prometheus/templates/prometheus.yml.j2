@@ -6,7 +6,7 @@ global:
     static_configs:
       - targets: ['localhost:9100']
 
-{% for host in groups[monitoringForServeres] %}
+{% for host in groups[hostvars[inventory_hostname]['monitoringForServeres']] %}
 
   - job_name: {{host}}
     scrape_interval: 5s
