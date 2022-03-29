@@ -26,13 +26,6 @@
     recurse: yes
   loop: [/etc/prometheus, /var/lib/prometheus, /etc/prometheus/consoles/, /etc/prometheus/console_libraries]
 
-- name: Download and Extract prometheus files to /tmp
-  unarchive:
-    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
-    dest: /tmp
-    validate_certs: no
-    remote_src: yes
-
 - name: Add prometheues.yml config yaml
   template:
     src: prometheus.yml.j2
@@ -40,6 +33,13 @@
     owner: prometheus
     group: prometheus
     mode: 775
+
+- name: Download and Extract prometheus files to /tmp
+  unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
+    dest: /tmp
+    validate_certs: no
+    remote_src: yes
 
 ## check
 - name: Copy files to prometheus directory \#1
