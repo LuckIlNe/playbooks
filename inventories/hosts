@@ -2,9 +2,6 @@
 dev_infra
 dev_service
 
-[dev:vars]
-remote_user=app
-
 
 [dev_infra]
 192.168.11.101
