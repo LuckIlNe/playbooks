@@ -15,6 +15,7 @@
     state: present
     append: yes
     create_home: no
+    shell: /bin/false
 
 - name: Download and Extract prometheus files to /tmp
   unarchive:

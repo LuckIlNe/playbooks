@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=node-exporter
-Group=node-exporter
+User=node_exporter
+Group=node_exporter
 ExecStart=/usr/local/bin/node_exporter \
 --web.listen-address="0.0.0.0:9100" \
 --collectors.enabled meminfo,loadavg,filesystem
