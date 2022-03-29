@@ -1,6 +1,6 @@
 ---
 - name: Install Server Monitor
-  hosts: dev_infra
+  hosts: dev_service
   remote_user: "{{ remote_user }}"
   become: true
   strategy: free
