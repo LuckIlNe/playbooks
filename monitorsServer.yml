@@ -3,6 +3,7 @@
   hosts: dev_infra
   remote_user: "{{ remote_user }}"
   become: true
+  strategy: free
   roles:
     - { role: "monitorings/prometheus/server", tags: prometheus }
     - { role: "monitorings/prometheus/agent", tags: node_exporter }
