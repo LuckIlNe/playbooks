@@ -14,7 +14,6 @@
     groups: node_exporter
     state: present
     append: yes
-    shell: /bin/false
     create_home: no
 
 - name: Download and Extract prometheus files to /tmp
