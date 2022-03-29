@@ -1,4 +1,4 @@
-- name: start node_exporter
+- name: start node_exporter.service
   systemd:
     name: node_exporter.service
     state: started
