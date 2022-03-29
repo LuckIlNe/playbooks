@@ -22,7 +22,7 @@
     state: directory
     owner: prometheus
     group: prometheus
-    directory_mode: yes
+    recurse: yes
   loop: [/etc/prometheus, /var/lib/prometheus, /etc/prometheus/consoles/, /etc/prometheus/console_libraries]
 
 - name: Download and Extract prometheus files to /tmp
