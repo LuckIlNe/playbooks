@@ -3,6 +3,13 @@
   dnf: name={{ item }} update_cache=yes state=latest
   loop: ['wget', 'tar']
 
+- name: Download and Extract prometheus files to /tmp
+  unarchive:
+    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
+    dest: /tmp
+    validate_certs: no
+    remote_src: yes
+
 - name: Create 'prometheus' group
   group:
     name: prometheus
@@ -34,29 +41,15 @@
     group: prometheus
     mode: 775
 
-- name: Download and Extract prometheus files to /tmp
-  unarchive:
-    src: https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz
-    dest: /tmp
-    validate_certs: no
-    remote_src: yes
-
-## check
 - name: Copy files to prometheus directory \#1
   copy:
     src: /tmp/prometheus-2.34.0.linux-amd64/{{ item }}
     dest: /etc/prometheus/{{ item }}
-    #src: "{{ item.src }}"
-    #dest: "{{ item.dest }}"
     owner: prometheus
     group: prometheus
     directory_mode: yes
     mode: 775
     remote_src: yes
-  #loop:
-  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/prometheus.yml', dest: '/etc/prometheus/prometheus.yml' }
-  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/console_libraries/', dest: '/etc/prometheus/console_libraries/' }
-  #  - { src: '/tmp/prometheus-2.34.0.linux-amd64/consoles/', dest: '/etc/prometheus/consoles/' }
   loop: [ 'consoles/', 'console_libraries/']
   tags: files
 

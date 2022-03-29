@@ -1,5 +1,6 @@
 ---
 remote_user: sre-quest
+monitoringForServeres: dev_service
 proxy_env:
   http_proxy: http://10.115.49.1:8080
   https_proxy: http://10.115.49.1:8080
