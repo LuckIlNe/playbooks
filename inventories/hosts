@@ -18,7 +18,7 @@ prod_service
 infra101 ansible_host=10.115.49.101
 
 [prod_service]
-alma103 10.115.49.102
-ubuntu102 10.115.49.103
+alma103 ansible_host=10.115.49.102
+ubuntu102 ansible_host=10.115.49.103
 
 
