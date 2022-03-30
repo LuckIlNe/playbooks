@@ -9,7 +9,7 @@
 
 - name: Install zabbix-agent
   apt:
-    name: zabbix agent
+    name: zabbix-agent
     update_cache: yes
     state: present
 
