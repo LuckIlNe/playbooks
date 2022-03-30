@@ -9,10 +9,8 @@
     state: present
 
 - name: Install zabbix agent
-  dnf:
-    name: zabbix-agent
-    state: present
-    update_cache: yes
+  dnf: name={{ item }} update_cache=yes state=present
+  loop: [zabbix-agent, zabbix-sender]
 
 - name: Create zabix-agent conf file
   template:
