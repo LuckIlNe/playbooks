@@ -1,0 +1,14 @@
+---
+- name: Add Grafana repository to yum config
+  copy: 
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+
+- name: Install Grafana
+  dnf: name={{ item }} update_cache=yes state=latest
+  loop: [epel-release, grafana]
+
+- name: Setup Grafana config file
+  debug:
+    msg: "Config file "
+  notify: start grafana-server
