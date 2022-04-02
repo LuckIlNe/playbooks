@@ -1,6 +1,0 @@
-- name: start altermanager.service
-  systemd:
-    name: altermanager.service
-    state: started
-    daemon_reload: yes
-    enabled: yes
