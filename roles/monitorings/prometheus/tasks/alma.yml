@@ -68,4 +68,4 @@
   template:
     src: prometheus.service.j2
     dest: /etc/systemd/system/prometheus.service
-  notify: start prometheus
+  notify: restart prometheus

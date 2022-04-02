@@ -37,4 +37,4 @@
   template:
     src: node_exporter.service.j2
     dest: /etc/systemd/system/node_exporter.service
-  notify: start node_exporter.service
+  notify: restart node_exporter.service
