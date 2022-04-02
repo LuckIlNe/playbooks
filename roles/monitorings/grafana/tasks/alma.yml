@@ -9,6 +9,10 @@
   loop: [epel-release, grafana]
 
 - name: Setup Grafana config file
-  debug:
-    msg: "Config file "
+  template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+    # owner: bin
+    # group: wheel
+    # mode: '644'
   notify: start grafana-server
