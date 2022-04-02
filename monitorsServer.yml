@@ -1,12 +1,13 @@
 ---
 - name: Install Server Monitor
   hosts: dev_infra
-  remote_user: "{{ remote_user }}"
+  #remote_user: "{{ remote_user }}"
   become: true
   strategy: free
   roles:
     - { role: "monitorings/prometheus", tags: prometheus }
     - { role: "monitorings/node_exporter", tags: node_exporter }
+    - { role: "monitorings/altermanager", tags: altermanager }
     # - { role: "monitorings/blackbox_exporter", tags: blackbox_exporter }
     # - { role: "monitorings/zabbix_server", tags: zabbix_server }
     # - { role: "monitorings/zabbix_agent", tags: zabbix_agent }
