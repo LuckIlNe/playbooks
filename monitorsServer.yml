@@ -6,7 +6,7 @@
   roles:
     - { role: "monitorings/prometheus", tags: prometheus }
     - { role: "monitorings/node_exporter", tags: node_exporter }
-    - { role: "monitorings/alertmanager", tags: altermanager }
+    - { role: "monitorings/alertmanager", tags: alertmanager }
     # - { role: "monitorings/blackbox_exporter", tags: blackbox_exporter }
     # - { role: "monitorings/zabbix_server", tags: zabbix_server }
     # - { role: "monitorings/zabbix_agent", tags: zabbix_agent }
