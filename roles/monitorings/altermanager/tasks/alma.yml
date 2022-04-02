@@ -31,8 +31,7 @@
     owner: alertmanager
     group: alertmanager
     recurse: yes
-  loop: [/etc/alertmanager, /var/lib/alertmanager]
-  #/etc/alertmanager/consoles/, /etc/alertmanager/console_libraries]
+  loop: [/etc/alertmanager/, /var/lib/alertmanager/]
 
 - name: Copy alertmanager binary file to /usr/local/bin/
   copy:
