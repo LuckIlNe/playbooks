@@ -1,0 +1,5 @@
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+           - '{{ ansible_ssh_host }}:9093'
