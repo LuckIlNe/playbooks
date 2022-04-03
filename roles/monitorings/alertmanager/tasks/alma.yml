@@ -22,7 +22,7 @@
     state: present
     append: yes
     create_home: no
-    shell: /bin/false
+    #shell: /bin/false
 
 - name: Create alertmanager directories
   file:

@@ -31,7 +31,7 @@
     owner: prometheus
     group: prometheus
     recurse: yes
-  loop: [/etc/prometheus, /var/lib/prometheus, /etc/prometheus/consoles/, /etc/prometheus/console_libraries/]
+  loop: [/etc/prometheus/, /var/lib/prometheus/, /etc/prometheus/consoles/, /etc/prometheus/console_libraries/]
 
 - name: Add prometheues.yml config yaml
   template:
@@ -39,7 +39,7 @@
     dest: /etc/prometheus/{{ item }}
     owner: prometheus
     group: prometheus
-    mode: 755
+    #mode: 755
   loop: [prometheus.yml, rules.yml]
 
 - name: Copy files to prometheus directory \#1
@@ -49,7 +49,7 @@
     owner: prometheus
     group: prometheus
     directory_mode: yes
-    mode: 755
+    #mode: 755
     remote_src: yes
   loop: [ 'consoles/', 'console_libraries/']
   tags: files
