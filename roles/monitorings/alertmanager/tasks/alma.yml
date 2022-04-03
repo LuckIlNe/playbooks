@@ -31,6 +31,7 @@
     owner: alertmanager
     group: alertmanager
     recurse: yes
+    mode: 755
   loop: [/etc/alertmanager/, /var/lib/alertmanager/]
 
 - name: Copy alertmanager binary file to /usr/local/bin/

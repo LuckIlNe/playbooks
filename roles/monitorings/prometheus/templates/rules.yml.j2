@@ -10,5 +10,6 @@ groups:
       title: {% raw %}'Instance {{ $labels.instance }} down'{% endraw %}
 
       description: {% raw %}'{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'{% endraw %}
+
     labels:
       severity: 'critical'
