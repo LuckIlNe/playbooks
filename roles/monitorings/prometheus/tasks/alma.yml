@@ -35,12 +35,12 @@
 
 - name: Add prometheues.yml config yaml
   template:
-    src: '{{ item }}'
+    src: '{{ item }}'.j2
     dest: /etc/prometheus/{{ item }}
     owner: prometheus
     group: prometheus
     mode: 644
-  loop: [prometheus.yml.j2, rules.yml.j2]
+  loop: [prometheus.yml, rules.yml]
 
 - name: Copy files to prometheus directory \#1
   copy:
