@@ -36,7 +36,7 @@
 - name: Add prometheues.yml config yaml
   template:
     src: '{{ item }}'
-    dest: /etc/prometheus/
+    dest: /etc/prometheus/{{ item }}
     owner: prometheus
     group: prometheus
     mode: 644
