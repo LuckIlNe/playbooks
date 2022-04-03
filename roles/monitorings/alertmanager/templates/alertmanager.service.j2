@@ -11,7 +11,7 @@ ExecReload=/bin/kill -HUP \$MAINPID
 ExecStart=/usr/local/bin/alertmanager \
           --config.file=/etc/alertmanager/alertmanager.yml \
           --storage.path=/var/lib/alertmanager \
-          --cluster.advertise-address={{ ansible_ssh_host }}:9093
+          --cluster.advertise-address=localhost:9093
 
 Restart=always
  

@@ -1,5 +1,5 @@
 - name: restart prometheus
-  systemd:
+  service:
     name: prometheus.service
     state: restarted
     daemon_reload: yes
