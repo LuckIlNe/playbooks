@@ -40,7 +40,7 @@
     owner: prometheus
     group: prometheus
     mode: 644
-  loop: [prometheus.yml, rules.yml.j2]
+  loop: [prometheus.yml.j2, rules.yml.j2]
 
 - name: Copy files to prometheus directory \#1
   copy:
