@@ -31,7 +31,7 @@
     owner: blackbox
     group: blackbox
     recurse: yes
-    mode: 
+    mode: 755
 
 - name: Add blackbox.yml config
   template:
