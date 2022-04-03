@@ -39,7 +39,7 @@
     dest: /etc/prometheus/{{ item }}
     owner: prometheus
     group: prometheus
-    mode: 644
+    mode: 755
   loop: [prometheus.yml, rules.yml]
 
 - name: Copy files to prometheus directory \#1
@@ -49,7 +49,7 @@
     owner: prometheus
     group: prometheus
     directory_mode: yes
-    mode: 644
+    mode: 755
     remote_src: yes
   loop: [ 'consoles/', 'console_libraries/']
   tags: files
