@@ -24,6 +24,23 @@
     validate_certs: no
     remote_src: yes
 
+- name: Create blackbox directory
+  file:
+    path: /etc/blackbox
+    state: directory
+    owner: blackbox
+    group: blackbox
+    recurse: yes
+    mode: 
+
+- name: Add blackbox.yml config
+  template:
+    src: blackbox.yml.j2
+    dest: /etc/blackbox/blackbox.yml
+    owner: blackbox
+    group: blackbox
+    mode: 644
+
 - name: Copy blackbox binary file to /usr/local/bin/
   copy:
     src: /tmp/blackbox_exporter-0.20.0.linux-amd64/blackbox_exporter
