@@ -37,4 +37,4 @@
   template:
     src: blackbox.service.j2
     dest: /etc/systemd/system/blackbox.service
-  notify: start blackbox.service
+  notify: restart blackbox.service

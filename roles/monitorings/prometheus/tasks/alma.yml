@@ -52,7 +52,6 @@
     #mode: 755
     remote_src: yes
   loop: [ 'consoles/', 'console_libraries/']
-  tags: files
 
 - name: Copy files to prometheus directory \#2
   copy:
@@ -63,7 +62,6 @@
     remote_src: yes
     mode: +x
   loop: ['prometheus', 'promtool']
-  tags: files
 
 - name: Create systemd prometheus.service
   template:
