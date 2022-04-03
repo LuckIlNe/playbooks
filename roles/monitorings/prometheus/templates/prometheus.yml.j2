@@ -1,6 +1,9 @@
 global:
   scrape_interval: 15s
 
+rule_files:
+  - rules.yml
+
 alerting:
   alertmanagers:
     - static_configs:
@@ -14,7 +17,7 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9100']
         lables:
-          distribution: {{ ansible_distribution }}
+          distribution: '{{ ansible_distribution }}'
           enviroment: 'infra'
 
 {% for host in groups[hostvars[inventory_hostname]['monitoringAgnets']] %}
@@ -23,7 +26,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: [ {{hostvars[host]['ansible_host']}}:9100 ]
-        labels: 
-          distribution: {{ ansible_distribution }}
-          enviroment: {{ hostvars[inventory_hostname]['monitoringAgnets'] }}
+      - labels: 
+          distribution: '{{ ansible_distribution }}'
+          enviroment: '{{ hostvars[inventory_hostname]['monitoringAgnets'] }}'
 {% endfor %}
