@@ -15,7 +15,7 @@
     state: present
     append: yes
     create_home: no
-    shell: /bin/false
+    #shell: /bin/false
 
 - name: Download and Extract blackbox_exporter files to /tmp
   unarchive:

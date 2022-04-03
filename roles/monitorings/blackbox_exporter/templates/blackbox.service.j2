@@ -9,7 +9,7 @@ User=blackbox
 Group=blackbox
 ExecStart=/usr/local/bin/blackbox_exporter \
   --config.file=/etc/blackbox/blackbox.yml \
-  --web.listen-address=localhost:9115
+  --web.listen-address=0.0.0.0:9115
 
 Restart=always
 
