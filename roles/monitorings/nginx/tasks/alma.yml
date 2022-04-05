@@ -12,7 +12,7 @@
   template:
     src: monitoring.conf.j2
     dest: /etc/nginx/conf.d/monitoring.conf
-  notify: resart nginx
+  notify: restart nginx
 
 - name: be sure Nginx is running and enabled
   service:
