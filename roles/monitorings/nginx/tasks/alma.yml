@@ -1,7 +1,7 @@
 ---
 - name: Install all required packages for nginx
   dnf: name={{ item }} update_cache=yes state=latest
-  loop: [nginx]
+  loop: [epel-release, nginx]
 
 - name: Remove file default nginx file from sites-enabled
   file:
@@ -11,13 +11,7 @@
 - name: Set monitoring.conf file for monitorings
   template:
     src: monitoring.conf.j2
-    dest: /etc/nginx/sites-available/monitoring.conf
-
-- name: Create a symbolic link to monitoring.conf
-  file:
-    src: /etc/nginx/sites-available/monitoring.conf
-    dest: /etc/nginx/sites-enabled/monitoring.conf
-    state: link
+    dest: /etc/nginx/conf.d/monitoring.conf
 
 - name: be sure Nginx is running and enabled
   service:
