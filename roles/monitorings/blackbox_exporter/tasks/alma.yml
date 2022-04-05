@@ -31,7 +31,7 @@
     owner: blackbox
     group: blackbox
     recurse: yes
-    mode: 755
+    mode: 0755
 
 - name: Add blackbox.yml config
   template:
@@ -39,7 +39,7 @@
     dest: /etc/blackbox/blackbox.yml
     owner: blackbox
     group: blackbox
-    mode: 644
+    mode: 0644
 
 - name: Copy blackbox binary file to /usr/local/bin/
   copy:

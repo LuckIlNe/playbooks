@@ -31,7 +31,7 @@
     owner: alertmanager
     group: alertmanager
     recurse: yes
-    mode: 755
+    mode: 0755
   loop: [/etc/alertmanager/, /var/lib/alertmanager/]
 
 - name: Copy alertmanager binary file to /usr/local/bin/
@@ -50,7 +50,7 @@
     dest: /etc/alertmanager/alertmanager.yml
     owner: alertmanager
     group: alertmanager
-    mode: 644
+    mode: 0644
 
 - name: Create systemd alertmanager.service
   template:
