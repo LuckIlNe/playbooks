@@ -7,5 +7,5 @@
   become: true
   strategy: free
   roles:
-    # - { role: "monitorings/node_exporter", tags: node_exporter }
+    - { role: "monitorings/node_exporter", tags: node_exporter }
     - { role: "monitorings/zabbix_agent", tags: zabbix_agent }

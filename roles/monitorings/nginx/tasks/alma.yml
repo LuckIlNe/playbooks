@@ -1,0 +1,26 @@
+---
+- name: Install all required packages for nginx
+  dnf: name={{ item }} update_cache=yes state=latest
+  loop: [nginx]
+
+- name: Remove file default nginx file from sites-enabled
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Set monitoring.conf file for monitorings
+  template:
+    src: monitoring.conf.j2
+    dest: /etc/nginx/sites-available/monitoring.conf
+
+- name: Create a symbolic link to monitoring.conf
+  file:
+    src: /etc/nginx/sites-available/monitoring.conf
+    dest: /etc/nginx/sites-enabled/monitoring.conf
+    state: link
+
+- name: be sure Nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: yes

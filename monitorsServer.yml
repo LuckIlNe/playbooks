@@ -9,5 +9,6 @@
     - { role: "monitorings/alertmanager", tags: alertmanager }
     - { role: "monitorings/blackbox_exporter", tags: blackbox_exporter }
     - { role: "monitorings/grafana", tags: grafana }
+    - { role: "monitorings/nginx", tags: nginx }
     # - { role: "monitorings/zabbix_server", tags: zabbix_server }
     # - { role: "monitorings/zabbix_agent", tags: zabbix_agent }

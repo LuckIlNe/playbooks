@@ -8,6 +8,13 @@
   dnf: name={{ item }} update_cache=yes state=latest
   loop: [epel-release, grafana]
 
+- name: Set prometheus datasource
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/grafana/provisioning/datasources/prometheus.yml
+    owner: grafana
+    group: grafana
+
 - name: Setup Grafana config file
   template:
     src: grafana.ini.j2
