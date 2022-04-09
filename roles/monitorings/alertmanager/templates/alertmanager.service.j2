@@ -7,7 +7,6 @@ After=network-online.target
 User=alertmanager
 Group=alertmanager
 Type=simple
-ExecReload=/bin/kill -HUP \$MAINPID
 ExecStart=/usr/local/bin/alertmanager \
           --config.file=/etc/alertmanager/alertmanager.yml \
           --storage.path=/var/lib/alertmanager \
