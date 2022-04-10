@@ -4,3 +4,8 @@
     state: restarted
     daemon_reload: yes
     enabled: yes
+
+- name: restart systemd-sysctl
+  systemd:
+    name: systemd-sysctl
+    state: restarted

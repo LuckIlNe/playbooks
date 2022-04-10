@@ -17,10 +17,42 @@ scrape_configs:
       - targets:
         - localhost:9115
 
+- job_name: 'blackbox-dns'
+    metrics_path: /probe
+    params:
+      module: [dns]
+    static_configs:
+      - targets:
+        - vm1.sth49.srequest.ru
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115
+
+  - job_name: blackbox-icmp
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    static_configs:
+      - targets:
+{% for host in groups[hostvars[inventory_hostname]['monitoringAgnets']] %}
+        - {{hostvars[host]['ansible_host']}}
+{% endfor %}
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115
+
   - job_name: blackbox-http
     metrics_path: /probe
     params:
-      module: [http_2xx, icmp]
+      module: [http_2xx]
     static_configs:
       - targets:
 {% for host in groups[hostvars[inventory_hostname]['monitoringAgnets']] %}

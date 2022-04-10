@@ -8,8 +8,10 @@ modules:
       fail_if_not_ssl: false
       tls_config:
         insecure_skip_verify: true
-  ping:
+  icmp:
     prober: icmp
     timeout: 5s
-  icmp:
-    preferred_ip_protocol: "ip4"
+    icmp:
+      preferred_ip_protocol: "ip4"
+  dns:
+    prober: dns

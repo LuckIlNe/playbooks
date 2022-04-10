@@ -7,6 +7,7 @@
   group:
     name: blackbox
     state: present
+    gid: 1004
 
 - name: Create 'blackbox' user
   user:
@@ -15,6 +16,7 @@
     state: present
     append: yes
     create_home: no
+
     #shell: /bin/false
 
 - name: Download and Extract blackbox_exporter files to /tmp
@@ -49,6 +51,13 @@
     group: blackbox
     remote_src: yes
     mode: +x
+
+- name: Set permission for ping
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: "net.ipv4.ping_group_range 1004 1004"
+    state: present
+  notify: restart systemd-sysctl
 
 - name: Create systemd blackbox.service
   template:
