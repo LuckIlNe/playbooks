@@ -15,17 +15,17 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-        - localhost:9115 
+        - localhost:9115
 
   - job_name: blackbox-http
     metrics_path: /probe
     params:
-      module: [http_2xx]
+      module: [http_2xx, icmp]
     static_configs:
       - targets:
-          {% for host in groups[hostvars[inventory_hostname]['monitoringAgnets']] %}
-          - {{hostvars[host]['ansible_host']}}
-          {% endfor %}
+{% for host in groups[hostvars[inventory_hostname]['monitoringAgnets']] %}
+        - {{hostvars[host]['ansible_host']}}
+{% endfor %}
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
