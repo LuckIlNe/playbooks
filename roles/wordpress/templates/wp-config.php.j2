@@ -57,8 +57,11 @@ define( 'SECURE_AUTH_SALT', {% raw %} '^R@qIn9NHbg6/Cf7t*La!po@!0R>C-T7:AnIN<6od
 define( 'LOGGED_IN_SALT',   {% raw %} 'fQ^(|xBr=$3lz|?+#)|K#2]mWBv>{DleJDCUdc5Ohx>v377V;ItbQ_<p(y-|hJDs' {% endraw %} );
 define( 'NONCE_SALT',       {% raw %} '8@;?Fy^Gmjo56J-vV+Y]N_/GsACTY,EvNq-jcX<o*JYTK$t)FKM.iabk~,{XoS0D' {% endraw %} );
 
-define( 'WP_HOME', 'http://{{ ansible_ssh_host }}' );
-define( 'WP_SITEURL', 'http://{{ ansible_ssh_host }}' );
+#define( 'WP_HOME', 'http://{{ ansible_ssh_host }}' );
+#define( 'WP_SITEURL', 'http://{{ ansible_ssh_host }}' );
+
+define( 'WP_HOME', 'http://sth49.srequest.ru' );
+define( 'WP_SITEURL', 'http://sth49.srequest.ru' );
 
 /**#@-*/
 
