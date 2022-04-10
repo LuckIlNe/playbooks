@@ -1,7 +1,7 @@
 ---
 remote_user: sre-quest
 ansible_ssh_user: sre-quest
-monitoringAgnets: dev_service
+monitoringAgnets: prod_service
 monitoringServer: 10.115.49.101
 proxy_env:
   http_proxy: http://10.115.49.1:8080

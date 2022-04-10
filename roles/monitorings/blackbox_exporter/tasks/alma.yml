@@ -55,7 +55,7 @@
 - name: Set permission for ping
   lineinfile:
     path: /etc/sysctl.conf
-    line: "net.ipv4.ping_group_range 1004 1004"
+    line: "net.ipv4.ping_group_range = 1004 1004"
     state: present
   notify: restart systemd-sysctl
 
