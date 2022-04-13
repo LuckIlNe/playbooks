@@ -1,7 +1,7 @@
 ---
-#- name: Install MySQL-server
-#  dnf: name={{ item }} update_cache=yes state=present
-#  loop: [epel-release, mysql-server, python3-PyMySQL]
+- name: Install MySQL-server
+  dnf: name={{ item }} update_cache=yes state=present
+  loop: [epel-release, mysql-server, python3-PyMySQL]
 
 - name: set mysql config .my.cnf
   template:
