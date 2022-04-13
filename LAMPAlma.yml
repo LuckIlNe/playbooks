@@ -1,6 +1,6 @@
 ---
 - name: Install LNMP
-  hosts: devInfra
+  hosts: dev_infra
   remote_user: root
   roles:
     - { role: "stores/mysql", tags: mysql }
