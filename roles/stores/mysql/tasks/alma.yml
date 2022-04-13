@@ -11,8 +11,14 @@
     group: root
     mode: 0600
 
+- name: be sure MySQL is running and enabled
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
 - name: Set the root password
-  #no_log: true
+  no_log: true
   mysql_user:
     name: root
     password: "{{ mysql_root_password }}"
