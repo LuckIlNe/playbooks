@@ -2,8 +2,15 @@
   service:
     name: apache2
     state: restarted
+    enabled: yes
 
 - name: reloaded apache2
   service:
     name: apache2
     state: reloaded
+
+- name: restart httpd
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes

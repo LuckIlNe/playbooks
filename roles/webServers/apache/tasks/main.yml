@@ -1,4 +1,5 @@
 ---
-- name: Install Apache
-  import_tasks: ubuntu.yml
+- include_tasks: ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
+- include_tasks: alma.yml
+  when: ansible_distribution == 'AlmaLinux'
