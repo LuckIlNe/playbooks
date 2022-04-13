@@ -1,14 +1,7 @@
 ---
 - name: Install MySQL-server
   dnf: name={{ item }} update_cache=yes state=present
-  loop: [epel-release, mysql-server, python39, python39-devel, python39-pip, python3-PyMySQL]
-
-- name: Install Required pip modules
-  pip:
-    name:
-      - PyMySQL
-    state: present
-    executable: pip3
+  loop: [epel-release, mysql-server, python3-PyMySQL]
 
 - name: set mysql config .my.cnf
   template:
@@ -17,15 +10,6 @@
     owner: root
     group: root
     mode: 0600
-
-- name: Set MySQL root Password
-  mysql_user:
-    login_host: 'localhost'
-    login_user: 'root'
-    login_password: ''
-    name: 'root'
-    password: '{{ mysql_root_password }}'
-    state: present
 
 - name: Set the root password
   #no_log: true
