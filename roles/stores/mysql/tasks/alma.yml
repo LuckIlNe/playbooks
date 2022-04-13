@@ -1,7 +1,7 @@
 ---
 - name: Install MySQL-server
   dnf: name={{ item }} update_cache=yes state=present
-  loop: [mysql-server, python3-pymysql]
+  loop: [mysql-server, python3-mysqldb]
 
 - name: set mysql config .my.cnf
   template:
@@ -34,4 +34,9 @@
     name: mysql
     state: started
     enabled: yes
+
+- name: Delete .my.conf
+  file:
+    path: /root/.my.cnf
+    state: absent
 
