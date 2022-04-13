@@ -1,8 +1,7 @@
 ---
 - name: Install MySQL-server
-  dnf:
-    name: mysql-server
-    state: present
+  dnf: name={{ item }} update_cache=yes state=present
+  loop: [mysql-server, python3-pymysql]
 
 - name: set mysql config .my.cnf
   template:
@@ -11,7 +10,7 @@
     owner: root
     group: root
     mode: 0600
-    
+
 - name: Set the root password
   no_log: true
   mysql_user:
