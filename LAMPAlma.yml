@@ -4,6 +4,5 @@
   become: true
   roles:
     - { role: "stores/mysql", tags: mysql }
-    - { role: "webServers/apache", tags: apache }
     - { role: "webServers/nginx", tags: nginx }
     - { role: "wordpress", tags: wordpress }
