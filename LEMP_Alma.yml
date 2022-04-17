@@ -1,0 +1,10 @@
+---
+- name: Install LNMP
+  hosts: vm3
+  become: true
+  roles:
+    - { role: "stores/mysql", tags: mysql }
+    - { role: "webServers/nginx", tags: nginx }
+    - { role: "webServers/php-fpm", tags: php-fpm }
+    - { role: "wordpress", tags: wordpress }
+
