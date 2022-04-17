@@ -2,7 +2,7 @@
 
 - name: install nginx
   dnf: name={{ item }} update_cache=yes state=present
-  loop: [ php, php-mysqlnd, php-fpm, php-opcache, php-gd, php-xml, php-mbstring]
+  loop: [ php, php-mysqlnd, php-fpm, php-opcache, php-gd, php-xml, php-mbstring, php-json]
 
 - name: Change user www.conf
   lineinfile:
