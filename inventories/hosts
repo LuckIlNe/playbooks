@@ -18,7 +18,7 @@ prod_service
 vm1 ansible_host=10.115.49.101
 
 [prod_service]
-vm3 ansible_host=10.115.49.102
-vm2 ansible_host=10.115.49.103
+vm2 ansible_host=10.115.49.102
+vm3 ansible_host=10.115.49.103
 
 

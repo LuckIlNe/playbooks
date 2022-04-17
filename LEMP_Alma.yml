@@ -7,4 +7,4 @@
     - { role: "webServers/nginx", tags: nginx }
     - { role: "webServers/php-fpm", tags: php-fpm }
     - { role: "wordpress", tags: wordpress }
-
+  environment: "{{ proxy_env }}"
