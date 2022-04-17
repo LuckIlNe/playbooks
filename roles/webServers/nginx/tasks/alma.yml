@@ -1,28 +1,36 @@
+---
+- name: set nginx repo
+  template:
+    src: yum.nginx.repo
+    dest: /etc/yum.repos.d/nginx.repo
+    owner: root
+    group: root
+    mode: 0644
+
 - name: install nginx
   dnf: name=nginx update_cache=yes state=present
+
+- name: remove default.conf
+  file:
+    path: /etc/nginx/conf.d/default.conf
+    state: absent
 
 - name: Set wordpress.conf file for Nginx
   template:
     src: wordpressAlma.conf.j2
-    dest: /etc/nginx/sites-available/wordpress.conf
+    dest: /etc/nginx/conf.d/wordpress.conf
 
-- name: Create a symbolic link to wordpress.conf
+- name: create conf.d.enabled directory
   file:
-    src: /etc/nginx/sites-available/wordpress.conf
-    dest: /etc/nginx/sites-enabled/wordpress.conf
+    state: directory
+    dest: /etc/nginx/conf.d.enabled/
+
+- name: create nginx link
+  file:
+    src: "/etc/nginx/conf.d/wordpress.conf"
+    dest: "/etc/nginx/conf.d.enabled/wordpress.conf"
     state: link
-
-- name: Remove file default nginx file from sites-available
-  file:
-    path: /etc/nginx/sites-available/default
-    state: absent
-
-- name: Remove file default nginx file from sites-enabled
-  file:
-    path: /etc/nginx/sites-enabled/default
-    state: absent
-  notify:
-    - restart nginx
+  notify: restart nginx
 
 - name: be sure Nginx is running and enabled
   service:
