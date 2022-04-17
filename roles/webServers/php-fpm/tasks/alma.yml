@@ -7,19 +7,19 @@
 
 - name: Change user www.conf
   lineinfile:
-    path: /etc/opt/remi/php74/www.conf
+    path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: 'user = apache'
     line: 'user = nginx'
 
 - name: Change user www.conf
   lineinfile:
-    path: /etc/opt/remi/php74/www.conf
+    path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: 'group = apache'
     line: 'group = nginx'
 
 - name: Change listen
   lineinfile:
-    path: /etc/opt/remi/php74/www.conf
+    path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: |
       ;listen.owner = nobody
       ;listen.group = nobody
@@ -31,6 +31,6 @@
 
 - name: Change user www.conf
   lineinfile:
-    path: /etc/opt/remi/php74/www.conf
+    path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: 'listen.acl_users = apache'
     line: 'listen.acl_users = nginx'
