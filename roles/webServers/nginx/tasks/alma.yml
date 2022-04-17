@@ -1,11 +1,12 @@
 ---
 - name: set nginx repo
-  template:
+  file:
     src: yum.nginx.repo
     dest: /etc/yum.repos.d/nginx.repo
     owner: root
     group: root
     mode: 0644
+    state: present
 
 - name: install nginx
   dnf: name=nginx update_cache=yes state=present
