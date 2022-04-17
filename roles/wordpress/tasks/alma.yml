@@ -1,6 +1,6 @@
 ---
 - name: Install Packages for wordpress
-  yum: name={{ item }} update_cache=yes state=present
+  dnf: name={{ item }} update_cache=yes state=present
   loop: [ 'php', 'php-mysql', 'php-mbstring', 'php-mcrypt', 'php-devel', 'php-xml', 'php-gd' ]
 
 - name: Download and Extract wordpress to /var/www/wordpress

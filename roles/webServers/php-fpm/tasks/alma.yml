@@ -1,0 +1,11 @@
+---
+
+
+- name: install nginx
+  dnf: name={{ item }} update_cache=yes state=present
+  loop: [ dnf-utils, http://rpms.remirepo.net/enterprise/remi-release-8.rpm, php:7.4, php, php-fpm, php-mysqlnd, php-opcache, php-gd, php-xml, php-mbstring, php-zip]
+
+#- name: remove default.conf
+#  copy:
+#    src: www.conf
+#    state: /etc/php-fpm.d/www.conf
