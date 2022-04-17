@@ -1,5 +1,9 @@
 ---
 
+- name: install nginx
+  dnf: name={{ item }} update_cache=yes state=present
+  loop: [ tar ]
+
 - name: Download and Extract wordpress to /var/www/wordpress
   unarchive:
     src: https://wordpress.org/latest.tar.gz

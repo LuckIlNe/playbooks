@@ -1,9 +1,8 @@
 ---
 
-
 - name: install nginx
   dnf: name={{ item }} update_cache=yes state=present
-  loop: [ dnf-utils, http://rpms.remirepo.net/enterprise/remi-release-8.rpm, php74-php-fpm, php74-php-mysqlnd]
+  loop: [ php, php-mysqlnd, php-fpm, php-opcache, php-gd, php-xml, php-mbstring]
 
 - name: Change user www.conf
   lineinfile:
