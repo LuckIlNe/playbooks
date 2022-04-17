@@ -21,13 +21,13 @@
   lineinfile:
     path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: ';listen.owner = nobody'
-    line: 'listen.owner = nginx'
+    line: 'listen.owner = www-data'
 
 - name: Change user www.conf
   lineinfile:
     path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: 'listen.group = nobody'
-    line: 'listen.group = nginx'
+    line: 'listen.group = www-data'
 
 - name: Change user www.conf
   lineinfile:
@@ -39,4 +39,4 @@
   lineinfile:
     path: /etc/opt/remi/php74/php-fpm.d/www.conf
     regexp: 'listen.acl_users = apache'
-    line: 'listen.acl_users = nginx'
+    line: 'listen.acl_users = www-data'
