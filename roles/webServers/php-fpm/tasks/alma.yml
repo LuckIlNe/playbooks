@@ -3,9 +3,34 @@
 
 - name: install nginx
   dnf: name={{ item }} update_cache=yes state=present
-  loop: [ dnf-utils, http://rpms.remirepo.net/enterprise/remi-release-8.rpm, php:7.4, php, php-fpm, php-mysqlnd, php-opcache, php-gd, php-xml, php-mbstring, php-zip]
+  loop: [ dnf-utils, http://rpms.remirepo.net/enterprise/remi-release-8.rpm, php74-php-fpm, php74-php-mysqlnd]
 
-#- name: remove default.conf
-#  copy:
-#    src: www.conf
-#    state: /etc/php-fpm.d/www.conf
+- name: Change user www.conf
+  lineinfile:
+    path: /etc/opt/remi/php74/www.conf
+    regexp: 'user = apache'
+    line: 'user = nginx'
+
+- name: Change user www.conf
+  lineinfile:
+    path: /etc/opt/remi/php74/www.conf
+    regexp: 'group = apache'
+    line: 'group = nginx'
+
+- name: Change listen
+  lineinfile:
+    path: /etc/opt/remi/php74/www.conf
+    regexp: |
+      ;listen.owner = nobody
+      ;listen.group = nobody
+      ;listen.mode = 0660
+    line: |
+      listen.owner = nginx
+      listen.group = nginx
+      listen.mode = 0660
+
+- name: Change user www.conf
+  lineinfile:
+    path: /etc/opt/remi/php74/www.conf
+    regexp: 'listen.acl_users = apache'
+    line: 'listen.acl_users = nginx'
