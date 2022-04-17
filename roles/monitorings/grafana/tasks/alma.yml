@@ -15,11 +15,11 @@
     owner: grafana
     group: grafana
 
-- name: Setup Grafana config file
-  template:
-    src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
-    # owner: bin
-    # group: wheel
-    # mode: '644'
-  notify: restart grafana-server
+#- name: Setup Grafana config file
+#  template:
+#    src: grafana.ini.j2
+#    dest: /etc/grafana/grafana.ini
+#    # owner: bin
+#    # group: wheel
+#    # mode: '644'
+#  notify: restart grafana-server
